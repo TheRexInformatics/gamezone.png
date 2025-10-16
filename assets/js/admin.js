@@ -76,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let games = JSON.parse(localStorage.getItem('games')) || [];
-    let genres = JSON.parse(localStorage.getItem('genres')) || ['Acción', 'Aventura', 'RPG', 'Estrategia'];
-    if (!localStorage.getItem('genres')) { localStorage.setItem('genres', JSON.stringify(genres)); }
     let gameToEditId = null;
 
     const gamesTableBody = document.querySelector('#games-table tbody');
@@ -91,7 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function populateGenreDropdown() {
         genreSelect.innerHTML = '';
-        genres.forEach(genre => { const option = document.createElement('option'); option.value = genre; option.textContent = genre; genreSelect.appendChild(option); });
+        const allGames = JSON.parse(localStorage.getItem('games')) || [];
+        const genres = [...new Set(allGames.map(game => game.genre))];
+        
+        genres.forEach(genre => { 
+            const option = document.createElement('option'); 
+            option.value = genre; 
+            option.textContent = genre; 
+            genreSelect.appendChild(option); 
+        });
     }
 
     function renderGamesTable() {
@@ -144,13 +150,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addGenreBtn.addEventListener('click', () => {
         const newGenre = prompt('Ingresa el nombre del nuevo género:');
-        if (newGenre && !genres.some(g => g.toLowerCase() === newGenre.toLowerCase())) {
-            genres.push(newGenre);
-            localStorage.setItem('genres', JSON.stringify(genres));
-            populateGenreDropdown();
-            genreSelect.value = newGenre;
-        } else if (newGenre) { 
-            alert('Ese género ya existe.'); 
+        if (newGenre) {
+            const allGames = JSON.parse(localStorage.getItem('games')) || [];
+            const genres = [...new Set(allGames.map(game => game.genre))];
+            
+            if (!genres.some(g => g.toLowerCase() === newGenre.toLowerCase())) {
+                // Actualizar la lista de géneros en todos los juegos no es necesario aquí
+                // ya que los géneros se obtienen dinámicamente de los juegos
+                populateGenreDropdown();
+                genreSelect.value = newGenre;
+            } else { 
+                alert('Ese género ya existe.'); 
+            }
         }
     });
 
@@ -172,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDashboard() {
         const allUsers = JSON.parse(localStorage.getItem('users')) || [];
         const allGames = JSON.parse(localStorage.getItem('games')) || [];
-        const allGenres = JSON.parse(localStorage.getItem('genres')) || [];
+        const genres = [...new Set(allGames.map(game => game.genre))];
 
         document.getElementById('total-users').textContent = allUsers.length;
         document.getElementById('total-games').textContent = allGames.length;
@@ -180,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const genreStatsList = document.getElementById('genre-stats');
         genreStatsList.innerHTML = '';
 
-        allGenres.forEach(genre => {
+        genres.forEach(genre => {
             const count = allGames.filter(game => game.genre === genre).length;
             const li = document.createElement('li');
             li.innerHTML = `<span class="genre-name">${genre}:</span> <span>${count} juegos</span>`;
