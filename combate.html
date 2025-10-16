@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combate - GameZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1><a href="index.html">GameZone</a></h1>
+        <nav>
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span class="nav-text">Inicio</span></a>
+            <a href="tienda.html" class="nav-link"><i class="fas fa-store"></i><span class="nav-text">Tienda</span></a>
+            <a href="categorias.html" class="nav-link"><i class="fas fa-th-list"></i><span class="nav-text">Categorías</span></a>
+            <a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i><span class="nav-text">Contacto</span></a>
+        </nav>
+        <div class="header-actions">
+            <a href="index.html#login" id="login-button" class="cta-button"><i class="fas fa-user"></i><span>Login</span></a>
+            <a href="admin.html" id="admin-panel-link" class="action-button hidden"><i class="fas fa-user-shield"></i></a>
+            <a href="#" id="cart-button" class="action-button hidden">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-badge" class="cart-badge hidden">0</span>
+            </a>
+            <div id="profile-menu" class="profile-menu hidden">
+                <img src="" alt="Foto de perfil" id="profile-pic-header">
+                <div class="dropdown-content">
+                    <a href="cuenta.html">Mi Cuenta</a>
+                    <a href="#" id="logout-btn">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="category-hero">
+            <h1>Categoría Combate</h1>
+            <p>Acción intensa, estrategia militar y batallas épicas te esperan en esta categoría</p>
+        </section>
+
+        <section class="category-games-grid">
+            <div class="category-game-card">
+                <img src="assets/img/modernwarfareIV.png" alt="Call of Duty 4: Modern Warfare" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Call of Duty 4: Modern Warfare</h3>
+                </div>
+                <div class="category-game-price">$19.000</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/modernwarfareII.png" alt="Call of Duty: Modern Warfare" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Call of Duty: Modern Warfare 2</h3>
+                </div>
+                <div class="category-game-price">$19.000</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/modernwarfareIII.png" alt="Call of Duty: Modern Warfare" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Call of Duty: Modern Warfare 3</h3>
+                </div>
+                <div class="category-game-price">$38.000</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/blackopsII.png" alt="Call of Duty: Black Ops" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Call of Duty: Black Ops 2</h3>
+                </div>
+                <div class="category-game-price">$57.000</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/blackopsIII.png" alt="Call of Duty: Black Ops" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Call of Duty: Black Ops 3</h3>
+                </div>
+                <div class="category-game-price">$57.000</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/worldatwar.png" alt="Call of Duty: World at War" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Call of Duty: World at War</h3>
+                </div>
+                <div class="category-game-price">$19.000</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/battlefield.png" alt="Battlefield 3" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Battlefield 3</h3>
+                </div>
+                <div class="category-game-price">$31.900</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/battlefieldIV.png" alt="Battlefield 4" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Battlefield 4</h3>
+                </div>
+                <div class="category-game-price">$31.900</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/sniper.png" alt="Sniper Elite V2" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Sniper Elite V2</h3>
+                </div>
+                <div class="category-game-price">$18.000</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/ghosts.jpg" alt="Sniper Elite V2" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Call of Duty Ghosts</h3>
+                </div>
+                <div class="category-game-price">$57.000</div>
+            </div>
+        </section>
+    </main>
+
+    <button id="theme-toggle-floating" class="action-button floating-btn">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre GameZone</h3>
+                <p>Tu universo de videojuegos. Dedicados a traerte las últimas noticias, la mejor tienda y la comunidad más apasionada.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navegación</h3>
+                <a href="index.html">Inicio</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="categorias.html">Categorías</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GameZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

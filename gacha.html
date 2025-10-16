@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gacha - GameZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1><a href="index.html">GameZone</a></h1>
+        <nav>
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span class="nav-text">Inicio</span></a>
+            <a href="tienda.html" class="nav-link"><i class="fas fa-store"></i><span class="nav-text">Tienda</span></a>
+            <a href="categorias.html" class="nav-link"><i class="fas fa-th-list"></i><span class="nav-text">Categorías</span></a>
+            <a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i><span class="nav-text">Contacto</span></a>
+        </nav>
+        <div class="header-actions">
+            <a href="index.html#login" id="login-button" class="cta-button"><i class="fas fa-user"></i><span>Login</span></a>
+            <a href="admin.html" id="admin-panel-link" class="action-button hidden"><i class="fas fa-user-shield"></i></a>
+            <a href="#" id="cart-button" class="action-button hidden">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-badge" class="cart-badge hidden">0</span>
+            </a>
+            <div id="profile-menu" class="profile-menu hidden">
+                <img src="" alt="Foto de perfil" id="profile-pic-header">
+                <div class="dropdown-content">
+                    <a href="cuenta.html">Mi Cuenta</a>
+                    <a href="#" id="logout-btn">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="category-hero">
+            <h1>Categoría Gacha</h1>
+            <p>Colecciona personajes y objetos en juegos con mecánicas de colección y sorteos</p>
+        </section>
+
+        <section class="category-games-grid">
+            <div class="category-game-card">
+                <img src="assets/img/wuwa.png" alt="Wuthering Waves" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Wuthering Waves</h3>
+                </div>
+                <div class="category-game-price">Gratis</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/honkai.png" alt="Honkai: Star Rail" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Honkai: Star Rail</h3>
+                </div>
+                <div class="category-game-price">Gratis</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/genshin.png" alt="Genshin Impact" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Genshin Impact</h3>
+                </div>
+                <div class="category-game-price">Gratis</div>
+            </div>
+
+            <div class="category-game-card">
+                <img src="assets/img/zzz.png" alt="Zenless Zone Zero" class="category-game-image">
+                <div class="category-game-content">
+                    <h3 class="category-game-title">Zenless Zone Zero</h3>
+                </div>
+                <div class="category-game-price">Gratis</div>
+            </div>
+        </section>
+    </main>
+
+    <button id="theme-toggle-floating" class="action-button floating-btn">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre GameZone</h3>
+                <p>Tu universo de videojuegos. Dedicados a traerte las últimas noticias, la mejor tienda y la comunidad más apasionada.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navegación</h3>
+                <a href="index.html">Inicio</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="categorias.html">Categorías</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GameZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

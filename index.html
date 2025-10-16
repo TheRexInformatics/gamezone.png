@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - GameZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <header>
+    <h1><a href="index.html">GameZone</a></h1>
+
+    <nav>
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span class="nav-text">Inicio</span></a>
+        <a href="tienda.html" class="nav-link"><i class="fas fa-store"></i><span class="nav-text">Tienda</span></a>
+        <a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i><span class="nav-text">Contacto</span></a>
+        <a href="categorias.html" class="nav-link"><i class="fas fa-th-list"></i><span class="nav-text">Categorías</span></a>
+    </nav>
+
+    <div class="header-actions">
+        <a href="index.html#login" id="login-button" class="cta-button"><i class="fas fa-user"></i><span>Login</span></a>
+        <a href="admin.html" id="admin-panel-link" class="action-button hidden"><i class="fas fa-user-shield"></i></a>
+        <a href="#" id="cart-button" class="action-button hidden">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-badge" class="cart-badge hidden">0</span>
+        </a>
+        <div id="profile-menu" class="profile-menu hidden">
+            <img src="" alt="Foto de perfil" id="profile-pic-header">
+            <div class="dropdown-content">
+                <a href="cuenta.html">Mi Cuenta</a>
+                <a href="#" id="logout-btn">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="login-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-login-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Bienvenido de Nuevo</h3>
+            <form id="login-form">
+                <div class="form-group"><label for="login-email">Email</label><input type="email" id="login-email" required></div>
+                <div class="form-group"><label for="login-password">Contraseña</label><input type="password" id="login-password" required></div>
+                <button type="submit" class="cta-button form-button">Entrar</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="forgot-password-link">¿Olvidaste tu contraseña?</a>
+                <a href="#" id="show-register-link">Crear una cuenta</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="register-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-register-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Crea tu Cuenta</h3>
+            <form id="register-form">
+                <div class="form-group"><label for="register-username">Nombre de Usuario</label><input type="text" id="register-username" required></div>
+                <div class="form-group"><label for="register-email">Email</label><input type="email" id="register-email" required></div>
+                <div class="form-group"><label for="register-password">Contraseña</label><input type="password" id="register-password" required></div>
+                <button type="submit" class="cta-button form-button">Registrarse</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="show-login-link">¿Ya tienes una cuenta? Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="forgot-password-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-forgot-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Recuperar Contraseña</h3>
+            <p>Ingresa tu email y te mostraremos tu contraseña actual.</p>
+            <form id="forgot-password-form">
+                <div class="form-group"><label for="forgot-email">Email</label><input type="email" id="forgot-email" required></div>
+                <button type="submit" class="cta-button form-button">Recuperar</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="back-to-login-link">Volver a Iniciar Sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h2>Tu universo. Tus reglas. Tu juego</h2>
+                <p>Tu destino definitivo para todo lo relacionado con los videojuegos</p>
+                <a href="tienda.html" class="cta-button">Explora la Tienda</a>
+            </div>
+        </section>
+
+        <section id="noticias">
+            <h2>Últimas Noticias</h2>
+            <div class="cards-container">
+                <article class="card">
+                    <img src="https://cdn1.epicgames.com/spt-assets/46fa0e1a8f734f27bf947f304224d1fd/blue-protocol-star-resonance-1mf5f.png" alt="Blue Protocol">
+                    <div class="card-content">
+                        <h3>Blue Protocol anuncia su fecha de lanzamiento</h3>
+                        <p>Tras años de desarrollo, el esperado RPG de mundo abierto saldrá este 8 de octubre de 2025.</p>
+                        <a href="#">Leer más...</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://www.anantagame.com/images/20250922/1758531082979_b6414f6476.png" alt="Ananta">
+                    <div class="card-content">
+                        <h3>Ananta: El "GTA anime" muestra un nuevo tráiler</h3>
+                        <p>Los desarrolladores revelan nuevo gameplay, mostrando el mapa, personajes, mecánicas y combate del juego.</p>
+                        <a href="#">Leer más...</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://cdn1.epicgames.com/spt-assets/6f3979ff608f42e286c83507a69b27f5/honkai-star-rail-5j6ol.jpg" alt="Honkai Star Rail">
+                    <div class="card-content">
+                        <h3>La nueva actualización de Honkai: Star Rail ya está aquí</h3>
+                        <p>A medida que la noche se desvanece, los forasteros marchan sin descanso por la tierra hacia el confín del mundo.</p>
+                        <a href="#">Leer más...</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre-nosotros">
+            <h2>Nuestro Equipo</h2>
+            <div class="team-container">
+                <div class="team-card">
+                    <img src="/assets/img/new-user.png" alt="Matias Espinoza">
+                    <h3>Matias Espinoza (Aruku)</h3>
+                    <h4>Desarrollador Principal</h4>
+                    <p>El cerebro detrás del código. Amante de la Monster y de los videojuegos.</p>
+                </div>
+                <div class="team-card">
+                    <img src="/assets/img/new-user.png" alt="Martin Villarroel">
+                    <h3>Martin Villarroel (Rex)</h3>
+                    <h4>Diseñador UI/UX</h4>
+                    <p>El artista que da vida y color a GameZone. Especialista en crear experiencias intuitivas.</p>
+                </div>
+                <div class="team-card">
+                    <img src="/assets/img/new-user.png" alt="Vicente Placencia">
+                    <h3>Vicente Placencia (ZorVaK)</h3>
+                    <h4>Redactor de Contenido</h4>
+                    <p>El narrador de historias. Trae las últimas noticias y las reseñas más honestas del mundo gamer.</p>
+                </div>
+                <div class="team-card">
+                    <img src="/assets/img/new-user.png" alt="Ian Badilla">
+                    <h3>Ian Badilla (vRayiRax)</h3>
+                    <h4>Community Gamer</h4>
+                    <p>El corazón de la comunidad. Conecta con los jugadores y mantiene la conversación viva.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre GameZone</h3>
+                <p>Tu universo de videojuegos. Dedicados a traerte las últimas noticias, la mejor tienda y la comunidad más apasionada.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navegación</h3>
+                <a href="index.html">Inicio</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GameZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <button id="theme-toggle-floating" class="action-button floating-btn">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <script src="/assets/js/script.js"></script>
+
+</body>
+</html>

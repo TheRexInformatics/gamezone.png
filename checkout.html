@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - GameZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <script>
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        if (!currentUser || cart.length === 0) {
+            alert('Debes iniciar sesión y tener artículos en el carrito para finalizar la compra.');
+            window.location.replace('tienda.html');
+        }
+    </script>
+
+    <header>
+        <h1><a href="index.html">GameZone</a></h1>
+        <nav>
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span class="nav-text">Inicio</span></a>
+            <a href="tienda.html" class="nav-link"><i class="fas fa-store"></i><span class="nav-text">Tienda</span></a>
+            <a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i><span class="nav-text">Contacto</span></a>
+        </nav>
+        <div class="header-actions">
+            <a href="index.html#login" id="login-button" class="cta-button"><i class="fas fa-user"></i><span>Login</span></a>
+            <a href="admin.html" id="admin-panel-link" class="action-button hidden"><i class="fas fa-user-shield"></i></a>
+            <a href="#" id="cart-button" class="action-button hidden">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-badge" class="cart-badge hidden">0</span>
+            </a>
+            <div id="profile-menu" class="profile-menu hidden">
+                <img src="" alt="Foto de perfil" id="profile-pic-header">
+                <div class="dropdown-content">
+                    <a href="cuenta.html">Mi Cuenta</a>
+                    <a href="#" id="logout-btn">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="login-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-login-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Bienvenido de Nuevo</h3>
+            <form id="login-form">
+                <div class="form-group"><label for="login-email">Email</label><input type="email" id="login-email" required></div>
+                <div class="form-group"><label for="login-password">Contraseña</label><input type="password" id="login-password" required></div>
+                <button type="submit" class="cta-button form-button">Entrar</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="forgot-password-link">¿Olvidaste tu contraseña?</a>
+                <a href="#" id="show-register-link">Crear una cuenta</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="register-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-register-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Crea tu Cuenta</h3>
+            <form id="register-form">
+                <div class="form-group"><label for="register-username">Nombre de Usuario</label><input type="text" id="register-username" required></div>
+                <div class="form-group"><label for="register-email">Email</label><input type="email" id="register-email" required></div>
+                <div class="form-group"><label for="register-password">Contraseña</label><input type="password" id="register-password" required></div>
+                <button type="submit" class="cta-button form-button">Registrarse</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="show-login-link">¿Ya tienes una cuenta? Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="forgot-password-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-forgot-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Recuperar Contraseña</h3>
+            <p>Ingresa tu email y te mostraremos tu contraseña actual.</p>
+            <form id="forgot-password-form">
+                <div class="form-group"><label for="forgot-email">Email</label><input type="email" id="forgot-email" required></div>
+                <button type="submit" class="cta-button form-button">Recuperar</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="back-to-login-link">Volver a Iniciar Sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <main>
+        <section id="checkout-section">
+            <h2>Finalizar Compra</h2>
+            <div class="checkout-container">
+                <div class="checkout-summary">
+                    <h3>Resumen de tu Pedido</h3>
+                    <div id="summary-items-container">
+                    </div>
+                    <div class="summary-total">
+                        <p>Total a Pagar:</p>
+                        <p id="summary-total-price">$0</p>
+                    </div>
+                </div>
+                <div class="checkout-form">
+                    <h3>Información de Pago (Ficticia)</h3>
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label for="card-name">Nombre en la Tarjeta</label>
+                            <input type="text" id="card-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Número de Tarjeta</label>
+                            <input type="text" id="card-number" placeholder="0000 0000 0000 0000" required>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Expiración (MM/AA)</label>
+                                <input type="text" id="card-expiry" placeholder="MM/AA" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvc">CVC</label>
+                                <input type="text" id="card-cvc" placeholder="123" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="cta-button">Confirmar Compra</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="theme-toggle-floating" class="action-button floating-btn"><i class="fas fa-sun"></i></button>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre GameZone</h3>
+                <p>Tu universo de videojuegos. Dedicados a traerte las últimas noticias, la mejor tienda y la comunidad más apasionada.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navegación</h3>
+                <a href="index.html">Inicio</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GameZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/checkout.js"></script>
+
+</body>
+</html>

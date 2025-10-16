@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador - GameZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+
+    <script>
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (!currentUser || currentUser.email !== 'admin@gamezone.local') {
+            alert('Acceso denegado. No tienes permisos de administrador.');
+            window.location.replace('index.html');
+        }
+    </script>
+
+    <header>
+        <h1><a href="index.html">GameZone</a></h1>
+        <nav>
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span class="nav-text">Inicio</span></a>
+            <a href="tienda.html" class="nav-link"><i class="fas fa-store"></i><span class="nav-text">Tienda</span></a>
+            <a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i><span class="nav-text">Contacto</span></a>
+        </nav>
+        <div class="header-actions">
+            <a href="index.html#login" id="login-button" class="cta-button"><i class="fas fa-user"></i><span>Login</span></a>
+            <a href="admin.html" id="admin-panel-link" class="action-button hidden"><i class="fas fa-user-shield"></i></a>
+            <a href="#" id="cart-button" class="action-button hidden">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-badge" class="cart-badge hidden">0</span>
+            </a>
+            <div id="profile-menu" class="profile-menu hidden">
+                <img src="" alt="Foto de perfil" id="profile-pic-header">
+                <div class="dropdown-content">
+                    <a href="cuenta.html">Mi Cuenta</a>
+                    <a href="#" id="logout-btn">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="login-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-login-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Bienvenido de Nuevo</h3>
+            <form id="login-form">
+                <div class="form-group"><label for="login-email">Email</label><input type="email" id="login-email" required></div>
+                <div class="form-group"><label for="login-password">Contraseña</label><input type="password" id="login-password" required></div>
+                <button type="submit" class="cta-button form-button">Entrar</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="forgot-password-link">¿Olvidaste tu contraseña?</a>
+                <a href="#" id="show-register-link">Crear una cuenta</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="register-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-register-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Crea tu Cuenta</h3>
+            <form id="register-form">
+                <div class="form-group"><label for="register-username">Nombre de Usuario</label><input type="text" id="register-username" required></div>
+                <div class="form-group"><label for="register-email">Email</label><input type="email" id="register-email" required></div>
+                <div class="form-group"><label for="register-password">Contraseña</label><input type="password" id="register-password" required></div>
+                <button type="submit" class="cta-button form-button">Registrarse</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="show-login-link">¿Ya tienes una cuenta? Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="forgot-password-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-container">
+        <button id="close-forgot-modal-btn" class="close-btn">&times;</button>
+        <div class="modal-content">
+            <h3>Recuperar Contraseña</h3>
+            <p>Ingresa tu email y te mostraremos tu contraseña actual.</p>
+            <form id="forgot-password-form">
+                <div class="form-group"><label for="forgot-email">Email</label><input type="email" id="forgot-email" required></div>
+                <button type="submit" class="cta-button form-button">Recuperar</button>
+            </form>
+            <div class="modal-links">
+                <a href="#" id="back-to-login-link">Volver a Iniciar Sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="edit-user-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-container">
+            <button id="close-edit-user-modal-btn" class="close-btn">&times;</button>
+            <div class="modal-content">
+                <h3>Editar Usuario</h3>
+                <form id="edit-user-form">
+                    <div class="form-group"><label for="edit-email">Email (no se puede cambiar)</label><input type="email" id="edit-email" disabled></div>
+                    <div class="form-group"><label for="edit-username">Nombre de Usuario</label><input type="text" id="edit-username" required></div>
+                    <div class="form-group"><label for="edit-role">Rol</label><select id="edit-role"><option value="user">Usuario</option><option value="admin">Administrador</option></select></div>
+                    <button type="submit" class="cta-button form-button">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-container">
+            <button id="close-game-modal-btn" class="close-btn">&times;</button>
+            <div class="modal-content">
+                <h3 id="game-modal-title">Agregar Nuevo Juego</h3>
+                <form id="game-form">
+                    <div class="form-group"><label for="game-title">Título</label><input type="text" id="game-title" required></div>
+                    <div class="form-group"><label for="game-description">Información</label><textarea id="game-description" rows="4" required></textarea></div>
+                    <div class="form-group"><label for="game-price">Precio (ej: 29990)</label><input type="number" id="game-price" required></div>
+                    <div class="form-group"><label for="game-image">URL de la Imagen</label><input type="text" id="game-image" required></div>
+                    <div class="form-group"><label for="game-genre">Género</label><div class="genre-input-group"><select id="game-genre" required></select><button type="button" id="add-genre-btn" class="cta-button">+</button></div></div>
+                    <button type="submit" class="cta-button form-button">Guardar Juego</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="admin-profile">
+                <img src="" alt="Admin" id="admin-pic-sidebar">
+                <h3>Admin Panel</h3>
+                <p>admin@gamezone.local</p>
+            </div>
+            <nav>
+                <a href="#" class="sidebar-link active" data-target="users">Panel de Usuarios</a>
+                <a href="#" class="sidebar-link" data-target="games">Panel de Juegos</a>
+                <a href="#" class="sidebar-link" data-target="dashboard">Gráfico General</a>
+            </nav>
+        </aside>
+
+        <main class="admin-content">
+            <section id="users" class="content-section active">
+                <h2>Panel de Usuarios</h2>
+                <div class="table-container">
+                    <table id="users-table">
+                        <thead><tr><th>Nombre de Usuario</th><th>Email</th><th>Rol</th><th>Acciones</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="games" class="content-section">
+                <h2>Panel de Juegos</h2>
+                <button id="add-game-btn" class="cta-button">Agregar Juego Nuevo</button>
+                <div class="table-container">
+                    <table id="games-table">
+                        <thead><tr><th>Imagen</th><th>Título</th><th>Género</th><th>Precio</th><th>Acciones</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="dashboard" class="content-section">
+                <h2>Gráfico General</h2>
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-info">
+                            <p>Usuarios Registrados</p>
+                            <h3 id="total-users">0</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-gamepad"></i>
+                        <div class="stat-info">
+                            <p>Juegos en la Tienda</p>
+                            <h3 id="total-games">0</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card genres-card">
+                        <i class="fas fa-tags"></i>
+                        <div class="stat-info">
+                            <p>Juegos por Género</p>
+                            <ul id="genre-stats"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button id="theme-toggle-floating" class="action-button floating-btn"><i class="fas fa-sun"></i></button>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre GameZone</h3>
+                <p>Tu universo de videojuegos. Dedicados a traerte las últimas noticias, la mejor tienda y la comunidad más apasionada.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navegación</h3>
+                <a href="index.html">Inicio</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GameZone. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+.account-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    gap: 2rem;
+    padding: 0 2rem;
+    align-items: flex-start;
+}
+
+.account-sidebar {
+    flex: 1;
+    background-color: var(--bg-color-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    position: sticky;
+    top: 120px;
+}
+
+.account-sidebar nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-sidebar .sidebar-link {
+    display: block;
+    padding: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.account-sidebar .sidebar-link:hover {
+    background-color: var(--bg-color-tertiary);
+}
+
+.account-sidebar .sidebar-link.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.account-content {
+    flex: 3;
+}
+
+.content-section {
+    display: none;
+    background-color: var(--bg-color-secondary);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.content-section h2 {
+    text-align: left;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.profile-pic-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-pic-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    object-fit: cover;
+}
+
+.pic-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.pic-actions label {
+    cursor: pointer;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.pic-actions a {
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+}
+
+.danger {
+    background-color: #dc3545;
+}
+
+.danger:hover {
+    background-color: #c82333;
+}
